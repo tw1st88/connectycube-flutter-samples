@@ -107,13 +107,16 @@ class _BodyLayoutState extends State<BodyLayout> {
         padding: EdgeInsets.all(48),
         child: Column(
           children: [
-            Text(
-              "Select users to start call:",
-              style: TextStyle(fontSize: 22),
-            ),
-            Expanded(
-              child: _getOpponentsList(context),
-            ),
+
+            // testing without calling feature
+
+            // Text(
+            //   "Select users to start call:",
+            //   style: TextStyle(fontSize: 22),
+            // ),
+            // Expanded(
+            //   child: _getOpponentsList(context),
+            // ),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -168,7 +171,7 @@ class _BodyLayoutState extends State<BodyLayout> {
     super.initState();
     _initConferenceConfig();
     _initCalls();
-    joinRoomId = currentUser.id.toString();
+    joinRoomId = 'test_videoroom_12345';//currentUser.id.toString();
   }
 
   void _initCalls() {
@@ -184,7 +187,7 @@ class _BodyLayoutState extends State<BodyLayout> {
   }
 
   void _startCall(Set<int> opponents) async {
-    if (opponents.isEmpty) return;
+    // if (opponents.isEmpty) return;
     _currentCall = await _callClient.createCallSession(currentUser.id);
 
     Navigator.push(

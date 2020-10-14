@@ -136,8 +136,10 @@ class _ConversationCallScreenState extends State<ConversationCallScreen>
   void initState() {
     super.initState();
     _initCustomMediaConfigs();
-    _callManager.onReceiveRejectCall = _onReceiveRejectCall;
-    _callManager.onCloseCall = _onCloseCall;
+    
+    // testing wihout call screen
+    // _callManager.onReceiveRejectCall = _onReceiveRejectCall;
+    // _callManager.onCloseCall = _onCloseCall;
 
     _callSession.onLocalStreamReceived = _addLocalMediaStream;
     _callSession.onRemoteStreamReceived = _addRemoteMediaStream;
@@ -152,7 +154,7 @@ class _ConversationCallScreenState extends State<ConversationCallScreen>
       log("join session= $publishers", TAG);
 
       if (!_isIncoming) {
-        _callManager.startCall(roomId, opponents, _callSession.currentUserId);
+        // _callManager.startCall(roomId, opponents, _callSession.currentUserId);
       }
     }));
   }
@@ -244,7 +246,7 @@ class _ConversationCallScreenState extends State<ConversationCallScreen>
 
   void handlePublisherReceived(List<int> publishers) {
     if (!_isIncoming) {
-      publishers.forEach((id) => _callManager.handleAcceptCall(id));
+      // publishers.forEach((id) => _callManager.handleAcceptCall(id));
     }
   }
 
@@ -506,7 +508,7 @@ class _ConversationCallScreenState extends State<ConversationCallScreen>
   void onConnectionClosedForUser(ConferenceSession session, int userId) {
     log("onConnectionClosedForUser userId= $userId");
     _removeMediaStream(session, userId);
-    _closeSessionIfLast();
+    // _closeSessionIfLast(); // do not exit call when opponent disconnected
   }
 
   @override
